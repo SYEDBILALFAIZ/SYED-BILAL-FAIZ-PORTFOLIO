@@ -8,39 +8,39 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #f7f9fc;
+    --bg: #eef2f6;
     --panel: #ffffff;
-    --panel-2: #eef3fb;
-    --border: #d8e1f0;
-    --text: #16243f;
-    --muted: #5b6b8c;
-    --amber: #d4860b;
-    --green: #1d6fd8;
-    --cyan: #1d6fd8;
-    --red: #d8454f;
-    --name-color: #000000;
+    --panel-2: #e4eaf1;
+    --border: #c9d4e0;
+    --text: #1c2733;
+    --muted: #5e7286;
+    --amber: #8a6d2f;
+    --green: #2e6f8e;
+    --cyan: #2e6f8e;
+    --red: #b34141;
+    --name-color: #0d1620;
     --mono: 'JetBrains Mono', monospace;
     --body: 'Inter', sans-serif;
   }
   html[data-theme="dark"]{
-    --bg: #0a0e1a;
-    --panel: #111728;
-    --panel-2: #161e36;
-    --border: #232c4a;
-    --text: #dbe2f0;
-    --muted: #8b97b8;
-    --amber: #f0a830;
-    --green: #38bdf8;
-    --cyan: #38bdf8;
-    --red: #ff6b6b;
-    --name-color: #ffffff;
+    --bg: #0e1419;
+    --panel: #16202a;
+    --panel-2: #1c2935;
+    --border: #2c3c4a;
+    --text: #d6e2ea;
+    --muted: #8aa0b0;
+    --amber: #c9a14f;
+    --green: #6ec3e8;
+    --cyan: #6ec3e8;
+    --red: #e08585;
+    --name-color: #f2f7fb;
   }
   html[data-theme="dark"] body{
     background-image:
-      linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px),
-      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(56,189,248,0.10), transparent),
-      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(56,189,248,0.08), transparent);
+      linear-gradient(rgba(110,195,232,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110,195,232,0.05) 1px, transparent 1px),
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(110,195,232,0.10), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(201,161,79,0.06), transparent);
   }
   html[data-theme="dark"] .scanlines{
     background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
@@ -56,10 +56,10 @@
     overflow-x:hidden;
     transition:background-color .3s ease, color .3s ease;
     background-image:
-      linear-gradient(rgba(29,111,216,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(29,111,216,0.05) 1px, transparent 1px),
-      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(29,111,216,0.06), transparent),
-      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(29,111,216,0.05), transparent);
+      linear-gradient(rgba(46,111,142,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,111,142,0.05) 1px, transparent 1px),
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(46,111,142,0.06), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(46,111,142,0.05), transparent);
     background-size: 42px 42px, 42px 42px, auto, auto;
   }
   a{color:inherit;text-decoration:none;}
@@ -126,7 +126,7 @@
     border:1px solid var(--border);transition:all .2s;letter-spacing:.3px;
   }
   .btn-primary{background:var(--green);color:#06140f;border-color:var(--green);font-weight:700;}
-  .btn-primary:hover{background:#1456b0;box-shadow:0 0 18px rgba(29,111,216,.30);}
+  .btn-primary:hover{background:#1d4e63;box-shadow:0 0 18px rgba(46,111,142,.30);}
   .btn-ghost{color:var(--text);}
   .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
   .icon-btn{display:inline-flex;align-items:center;gap:8px;}
@@ -155,7 +155,7 @@
   section{padding:80px 0;border-bottom:1px solid var(--border);}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:42px;}
   .sec-num{font-family:var(--mono);color:var(--amber);font-size:13px;}
-  .sec-title{font-family:var(--mono);font-weight:700;font-size:26px;color:#0f1d3a;letter-spacing:-.3px;}
+  .sec-title{font-family:var(--mono);font-weight:800;font-size:27px;color:var(--name-color);letter-spacing:-.3px;}
   .sec-rule{flex:1;height:1px;background:var(--border);}
 
   /* ABOUT */
@@ -196,12 +196,12 @@
     transition:top .6s ease;
   }
   .case:hover::before{top:100%;}
-  .case:hover{border-color:rgba(29,111,216,.40);background:var(--panel-2);}
+  .case:hover{border-color:rgba(46,111,142,.40);background:var(--panel-2);}
   .case .id{font-family:var(--mono);color:var(--muted);font-size:12px;padding-top:3px;}
-  .case h3{font-size:16.5px;color:#0f1d3a;margin-bottom:7px;}
+  .case h3{font-size:16.5px;color:var(--name-color);margin-bottom:7px;}
   .case p{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
   .tags{display:flex;gap:7px;flex-wrap:wrap;}
-  .tag{font-family:var(--mono);font-size:10.5px;color:var(--green);border:1px solid rgba(29,111,216,.30);background:rgba(29,111,216,.07);padding:3px 8px;border-radius:3px;}
+  .tag{font-family:var(--mono);font-size:10.5px;color:var(--green);border:1px solid rgba(46,111,142,.30);background:rgba(46,111,142,.08);padding:3px 8px;border-radius:3px;}
   .case .status{font-family:var(--mono);font-size:11px;white-space:nowrap;}
   .status.closed{color:var(--green);}
   .case .open-link{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--amber);}
@@ -224,7 +224,7 @@
     transition:border-color .2s, transform .15s;flex:1 1 220px;max-width:320px;
   }
   .cert-chip:hover{border-color:var(--cyan);transform:translateY(-2px);}
-  .cert-chip.cert-highlight{border-color:rgba(29,111,216,.45);background:var(--panel-2);}
+  .cert-chip.cert-highlight{border-color:rgba(46,111,142,.45);background:var(--panel-2);}
   .cert-chip .cert-name{font-size:13px;color:var(--text);line-height:1.3;}
   .cert-chip .cert-date{font-family:var(--mono);font-size:10.5px;color:var(--muted);}
 
@@ -243,7 +243,7 @@
     background:var(--panel);border:1px solid var(--border);border-radius:8px;
     padding:44px;text-align:center;
   }
-  .contact-box h2{font-family:var(--mono);font-size:24px;color:#0f1d3a;margin-bottom:12px;}
+  .contact-box h2{font-family:var(--mono);font-size:24px;color:var(--name-color);margin-bottom:12px;}
   .contact-box p{color:var(--muted);max-width:440px;margin:0 auto 28px;font-size:14.5px;}
   .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
@@ -305,22 +305,6 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
         LinkedIn
       </a>
-    </div>
-
-    <div class="terminal">
-      <div class="term-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="term-title">bilal@soc-workstation: ~</span></div>
-      <div class="term-body">
-        <div class="line">$ whoami</div>
-        <div class="line ok">&gt; syed_bilal_faiz</div>
-        <div class="line">$ cat role.txt</div>
-        <div class="line ok">&gt; MTO @ Multinet Pakistan</div>
-        <div class="line">$ cat focus.txt</div>
-        <div class="line">&gt; threat detection · log analysis · SIEM</div>
-        <div class="line">$ ls ./projects</div>
-        <div class="line"><span class="path">soc-splunk/</span> <span class="path">phishing-detection/</span></div>
-        <div class="line warn">$ scan --status</div>
-        <div class="line ok">&gt; 38+ certs · 15 repos · 0 issues found ✓</div>
-      </div>
     </div>
   </div>
 </header>

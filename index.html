@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Bilal Faiz — SOC Analyst & Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0e0f;
+    --panel: #111718;
+    --panel-2: #161e1f;
+    --border: #233030;
+    --text: #d8e3e0;
+    --muted: #6b8482;
+    --amber: #ffb454;
+    --green: #4ade80;
+    --red: #ff6b6b;
+    --mono: 'JetBrains Mono', monospace;
+    --body: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+    background-image:
+      linear-gradient(rgba(74,222,128,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,222,128,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--green);color:#06140f;}
+
+  /* scanline overlay */
+  .scanlines{
+    position:fixed;inset:0;pointer-events:none;z-index:50;
+    background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode:overlay;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(10,14,15,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .navlinks{display:flex;gap:28px;font-family:var(--mono);font-size:12.5px;}
+  .navlinks a{color:var(--muted);transition:color .2s;letter-spacing:.3px;}
+  .navlinks a:hover{color:var(--green);}
+  .navlinks .idx{color:var(--amber);margin-right:4px;}
+
+  /* HERO */
+  header.hero{
+    padding:110px 0 90px;
+    position:relative;
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;color:var(--amber);
+    border:1px solid rgba(255,180,84,0.35);
+    background:rgba(255,180,84,0.06);
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:3px;margin-bottom:28px;
+  }
+  .eyebrow .pip{width:6px;height:6px;background:var(--amber);border-radius:50%;}
+  h1.title{
+    font-family:var(--mono);font-weight:800;
+    font-size:clamp(34px,6vw,64px);
+    line-height:1.08;letter-spacing:-1px;
+    color:#f2f7f5;
+  }
+  h1.title .accent{color:var(--green);}
+  .role-line{
+    font-family:var(--mono);font-size:16px;color:var(--muted);margin-top:18px;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .cursor{display:inline-block;width:9px;height:18px;background:var(--green);animation:blink 1s steps(2) infinite;vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero-desc{max-width:560px;color:var(--muted);font-size:15.5px;margin-top:24px;}
+  .hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:13px;padding:12px 22px;border-radius:3px;
+    border:1px solid var(--border);transition:all .2s;letter-spacing:.3px;
+  }
+  .btn-primary{background:var(--green);color:#06140f;border-color:var(--green);font-weight:700;}
+  .btn-primary:hover{background:#3ec96f;box-shadow:0 0 18px rgba(74,222,128,.35);}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green);}
+
+  /* terminal panel beside hero */
+  .terminal{
+    margin-top:54px;
+    background:var(--panel);border:1px solid var(--border);border-radius:6px;
+    max-width:620px;overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:7px;padding:10px 14px;
+    background:var(--panel-2);border-bottom:1px solid var(--border);
+  }
+  .term-bar span{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .term-bar .r{background:#ff5f56;} .term-bar .y{background:#ffbd2e;} .term-bar .g{background:#27c93f;}
+  .term-title{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:8px;}
+  .term-body{padding:18px 20px;font-family:var(--mono);font-size:12.5px;color:var(--muted);}
+  .term-body .line{margin-bottom:7px;}
+  .term-body .ok{color:var(--green);}
+  .term-body .warn{color:var(--amber);}
+  .term-body .path{color:#7fb4ff;}
+
+  /* SECTION generic */
+  section{padding:80px 0;border-bottom:1px solid var(--border);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:42px;}
+  .sec-num{font-family:var(--mono);color:var(--amber);font-size:13px;}
+  .sec-title{font-family:var(--mono);font-weight:700;font-size:26px;color:#f2f7f5;letter-spacing:-.3px;}
+  .sec-rule{flex:1;height:1px;background:var(--border);}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:start;}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:15px;}
+  .about-text strong{color:var(--text);}
+  .info-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:22px;
+    font-family:var(--mono);font-size:13px;
+  }
+  .info-card .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--border);}
+  .info-card .row:last-child{border-bottom:none;}
+  .info-card .k{color:var(--muted);}
+  .info-card .v{color:var(--text);text-align:right;}
+
+  /* SKILLS */
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .skill-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:20px;
+    transition:border-color .2s, transform .2s;
+  }
+  .skill-card:hover{border-color:var(--green);transform:translateY(-3px);}
+  .skill-card .icon{font-family:var(--mono);color:var(--green);font-size:12px;margin-bottom:10px;letter-spacing:1px;}
+  .skill-card h4{font-size:15px;margin-bottom:8px;color:var(--text);}
+  .skill-card p{font-size:12.5px;color:var(--muted);}
+
+  /* PROJECTS - case file cards */
+  .case-list{display:flex;flex-direction:column;gap:16px;}
+  .case{
+    background:var(--panel);border:1px solid var(--border);border-radius:6px;
+    padding:22px 24px;display:grid;grid-template-columns:90px 1fr auto;gap:20px;align-items:start;
+    transition:border-color .2s, background .2s;
+  }
+  .case:hover{border-color:rgba(74,222,128,.45);background:var(--panel-2);}
+  .case .id{font-family:var(--mono);color:var(--muted);font-size:12px;padding-top:3px;}
+  .case h3{font-size:16.5px;color:#f2f7f5;margin-bottom:7px;}
+  .case p{font-size:13.5px;color:var(--muted);margin-bottom:10px;}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;}
+  .tag{font-family:var(--mono);font-size:10.5px;color:var(--green);border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.06);padding:3px 8px;border-radius:3px;}
+  .case .status{font-family:var(--mono);font-size:11px;white-space:nowrap;}
+  .status.closed{color:var(--green);}
+  .case .open-link{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--amber);}
+  .case .open-link:hover{text-decoration:underline;}
+
+  /* EDUCATION timeline */
+  .timeline{position:relative;padding-left:28px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:var(--border);}
+  .tl-item{position:relative;padding-bottom:30px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:'';position:absolute;left:-28px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--green);}
+  .tl-item h4{font-size:15.5px;color:var(--text);}
+  .tl-item .meta{font-family:var(--mono);font-size:12px;color:var(--amber);margin:4px 0 6px;}
+  .tl-item p{font-size:13.5px;color:var(--muted);}
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--panel);border:1px solid var(--border);border-radius:8px;
+    padding:44px;text-align:center;
+  }
+  .contact-box h2{font-family:var(--mono);font-size:24px;color:#f2f7f5;margin-bottom:12px;}
+  .contact-box p{color:var(--muted);max-width:440px;margin:0 auto 28px;font-size:14.5px;}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  footer{padding:30px 0;text-align:center;font-family:var(--mono);font-size:11.5px;color:var(--muted);}
+
+  @media (max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    .case{grid-template-columns:1fr;}
+    .case .id{padding-top:0;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> SBF // root</div>
+    <div class="navlinks">
+      <a href="#about"><span class="idx">01</span>about</a>
+      <a href="#skills"><span class="idx">02</span>skills</a>
+      <a href="#projects"><span class="idx">03</span>cases</a>
+      <a href="#education"><span class="idx">04</span>education</a>
+      <a href="#contact"><span class="idx">05</span>contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="pip"></span> STATUS: AVAILABLE FOR SOC / CYBERSECURITY ROLES</div>
+    <h1 class="title">Syed Bilal <span class="accent">Faiz</span></h1>
+    <div class="role-line">Cybersecurity Analyst — SOC · Threat Detection · Log Analysis · Forensics <span class="cursor"></span></div>
+    <p class="hero-desc">I investigate, detect, and document. Based in Karachi, studying at Hamdard University, and building a portfolio of hands-on security and data-science projects — from phishing detection to network forensics.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View case files →</a>
+      <a class="btn btn-ghost" href="https://github.com/SYEDBILALFAIZ" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/syed-bilal-faiz-262324247" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="term-title">bilal@soc-workstation: ~</span></div>
+      <div class="term-body">
+        <div class="line">$ whoami</div>
+        <div class="line ok">&gt; syed_bilal_faiz — cybersecurity analyst</div>
+        <div class="line">$ cat focus.txt</div>
+        <div class="line">&gt; threat detection · log analysis · digital forensics</div>
+        <div class="line">$ ls ./projects</div>
+        <div class="line"><span class="path">phishing-detection/</span> <span class="path">network-forensics/</span> <span class="path">ml-security/</span></div>
+        <div class="line warn">$ scan --status</div>
+        <div class="line ok">&gt; 13 repositories indexed · 0 critical issues found ✓</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">About</span><span class="sec-rule"></span></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a cybersecurity-focused student and analyst working across <strong>SOC operations, threat detection, and digital forensics</strong>. My work blends security fundamentals with practical data science — analyzing logs, hunting anomalies, and building models that flag what shouldn't be there.</p>
+        <p>Recent projects span <strong>phishing URL detection</strong>, <strong>network topology design (CCNA-level)</strong>, and applying machine learning (clustering, classification) to security and behavioral datasets. I like turning raw data — packets, logs, datasets — into a clear verdict: safe, suspicious, or compromised.</p>
+        <p>Currently sharpening skills in Python-based data analysis, network architecture, and incident-style investigation workflows, with 13 public repositories documenting the process.</p>
+      </div>
+      <div class="info-card">
+        <div class="row"><span class="k">Name</span><span class="v">Syed Bilal Faiz</span></div>
+        <div class="row"><span class="k">Focus</span><span class="v">SOC / Threat Detection</span></div>
+        <div class="row"><span class="k">Education</span><span class="v">Hamdard University</span></div>
+        <div class="row"><span class="k">Location</span><span class="v">Karachi, Pakistan</span></div>
+        <div class="row"><span class="k">Repos</span><span class="v">13 public</span></div>
+        <div class="row"><span class="k">Status</span><span class="v" style="color:var(--green)">● Open to work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Skills</span><span class="sec-rule"></span></div>
+    <div class="skill-grid">
+      <div class="skill-card"><div class="icon">[ SOC ]</div><h4>Threat Detection</h4><p>Log analysis, anomaly hunting, and identifying indicators of compromise across systems.</p></div>
+      <div class="skill-card"><div class="icon">[ NET ]</div><h4>Networking</h4><p>CCNA-level routing, switching, VLANs, and Cisco Packet Tracer topology design.</p></div>
+      <div class="skill-card"><div class="icon">[ ML ]</div><h4>Applied Machine Learning</h4><p>K-Means clustering, Naïve Bayes, Random Forest & XGBoost for classification and anomaly detection.</p></div>
+      <div class="skill-card"><div class="icon">[ PY ]</div><h4>Data Analysis</h4><p>Python, pandas, seaborn, matplotlib for processing and visualizing security datasets.</p></div>
+      <div class="skill-card"><div class="icon">[ FOR ]</div><h4>Digital Forensics</h4><p>Investigative analysis of data sources to reconstruct events and trace root cause.</p></div>
+      <div class="skill-card"><div class="icon">[ DS ]</div><h4>Data Science for Security</h4><p>Phishing detection, behavioral datasets, and predictive modeling applied to real-world security problems.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Case Files / Projects</span><span class="sec-rule"></span></div>
+    <div class="case-list">
+
+      <div class="case">
+        <div class="id">CASE-01</div>
+        <div>
+          <h3>Data Science for Cybersecurity</h3>
+          <p>Processed and analyzed phishing datasets with pandas, seaborn, and matplotlib. Applied K-Means clustering for anomaly detection and a Naïve Bayes classifier for phishing URL detection, reaching over 90% accuracy.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">K-Means</span><span class="tag">Naïve Bayes</span><span class="tag">Phishing Detection</span></div>
+          <a class="open-link" href="https://github.com/SYEDBILALFAIZ/Project-Data-Science-for-Cybersecurity" target="_blank" rel="noopener">→ open repository</a>
+        </div>
+        <div class="status closed">RESOLVED</div>
+      </div>
+
+      <div class="case">
+        <div class="id">CASE-02</div>
+        <div>
+          <h3>CCNA Networking Projects</h3>
+          <p>Cisco Packet Tracer build of a full university campus network — routers, switches, VLANs, and servers — with complete topology, routing, and server configuration.</p>
+          <div class="tags"><span class="tag">CCNA</span><span class="tag">Packet Tracer</span><span class="tag">VLANs</span><span class="tag">Routing</span></div>
+          <a class="open-link" href="https://github.com/SYEDBILALFAIZ/CCNA-Networking-Projects" target="_blank" rel="noopener">→ open repository</a>
+        </div>
+        <div class="status closed">RESOLVED</div>
+      </div>
+
+      <div class="case">
+        <div class="id">CASE-03</div>
+        <div>
+          <h3>Forest CoverType Classification</h3>
+          <p>Predicts forest cover type using the UCI Covertype dataset — full pipeline of data cleaning, preprocessing, and multi-class model training with Random Forest and XGBoost, plus feature importance analysis.</p>
+          <div class="tags"><span class="tag">Random Forest</span><span class="tag">XGBoost</span><span class="tag">Multi-class ML</span></div>
+          <a class="open-link" href="https://github.com/SYEDBILALFAIZ/Forest-CoverType-Classification-ML" target="_blank" rel="noopener">→ open repository</a>
+        </div>
+        <div class="status closed">RESOLVED</div>
+      </div>
+
+      <div class="case">
+        <div class="id">CASE-04</div>
+        <div>
+          <h3>Customer Segmentation (ML)</h3>
+          <p>K-Means clustering on the Mall Customer dataset — preprocessing, clustering, and visualization to surface data-driven customer segments.</p>
+          <div class="tags"><span class="tag">K-Means</span><span class="tag">Clustering</span><span class="tag">Data Viz</span></div>
+          <a class="open-link" href="https://github.com/SYEDBILALFAIZ/Customer-segmentation-ml" target="_blank" rel="noopener">→ open repository</a>
+        </div>
+        <div class="status closed">RESOLVED</div>
+      </div>
+
+      <div class="case">
+        <div class="id">CASE-05</div>
+        <div>
+          <h3>Student Score Prediction</h3>
+          <p>Linear regression model predicting students' exam scores based on study hours — a clean, interpretable baseline ML project.</p>
+          <div class="tags"><span class="tag">Linear Regression</span><span class="tag">Python</span></div>
+          <a class="open-link" href="https://github.com/SYEDBILALFAIZ/Student-Score-Prediction-ml" target="_blank" rel="noopener">→ open repository</a>
+        </div>
+        <div class="status closed">RESOLVED</div>
+      </div>
+
+    </div>
+    <p style="margin-top:24px;text-align:center;font-family:var(--mono);font-size:12.5px;">
+      <a href="https://github.com/SYEDBILALFAIZ?tab=repositories" target="_blank" rel="noopener" style="color:var(--amber);">→ view all 13 repositories on GitHub</a>
+    </p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Education</span><span class="sec-rule"></span></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <h4>Hamdard University</h4>
+        <div class="meta">Karachi, Pakistan</div>
+        <p>Building a foundation in cybersecurity, computing, and data analysis — applying coursework directly to hands-on SOC and machine-learning projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Contact</span><span class="sec-rule"></span></div>
+    <div class="contact-box">
+      <h2>Let's connect</h2>
+      <p>Open to SOC analyst, cybersecurity, and security-data roles. Reach out on LinkedIn or check the latest work on GitHub.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/syed-bilal-faiz-262324247" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/SYEDBILALFAIZ" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>SYEDBILALFAIZ © 2026 — built from live GitHub data</footer>
+
+</body>
+</html>
